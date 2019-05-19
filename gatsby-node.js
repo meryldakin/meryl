@@ -7,7 +7,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const slug = createFilePath({ node, getNode, basePath: `pages/posts` })
     const slugPathArray = slug.split("/")
     const slugShow = slugPathArray[(slugPathArray.length - 2)]
-    console.log("SLUG", slugShow)
     createNodeField({
       node,
       name: `slug`,
