@@ -1,7 +1,7 @@
 import Typography from "typography"
-import wordpress2010Theme from 'typography-theme-wordpress-2010'
+import moraga from 'typography-theme-moraga'
 
-const typography = new Typography(wordpress2010Theme)
+const typography = new Typography(moraga)
 
 export const { scale, rhythm, options } = typography
 export default typography

@@ -1,14 +1,16 @@
 import React from "react"
+import Layout from "../components/layout.js"
 import { graphql } from "gatsby"
 
 export default ({ data }) => {
-  console.log(data)
   const post = data.markdownRemark
   return (
+    <Layout>
       <div>
         <h1>{post.frontmatter.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </div>
+    </Layout>
   )
 }
 

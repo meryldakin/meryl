@@ -23,9 +23,10 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-typography": "^0.16.19",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.87.3",
     "typography": "^0.16.19",
-    "typography-theme-fairy-gates": "^0.16.19",
-    "typography-theme-wordpress-2010": "^0.16.19"
+    "typography-theme-moraga": "^0.16.19"
   },
   "devDependencies": {
     "prettier": "^1.17.1"

@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 
 
@@ -13,7 +13,7 @@ const Blog = ({data}) => (
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <div key={node.id}>
             <h3>
-              {node.frontmatter.title}{" "}
+              <Link to={node.fields.slug}>{node.frontmatter.title}</Link>{" "}
               <span>
                 — {node.frontmatter.date}
               </span>
@@ -34,6 +34,9 @@ export const query = graphql`
         edges {
           node {
             id
+            fields {
+              slug
+            }
             frontmatter {
               title
               date(formatString: "DD MMMM, YYYY")
