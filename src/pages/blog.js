@@ -7,10 +7,10 @@ const Blog = ({data}) => (
   <Layout>
     <div>
         <h1>
-          Amazing Pandas Eating Things
+          Blog
         </h1>
-        <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
-        {data.allMarkdownRemark.edges.map(({ node }) => (
+        <h4>{data.allMdx.totalCount} Posts</h4>
+        {data.allMdx.edges.map(({ node }) => (
           <div key={node.id}>
             <h3>
               <Link to={node.fields.slug}>{node.frontmatter.title}</Link>{" "}
@@ -18,7 +18,7 @@ const Blog = ({data}) => (
                 — {node.frontmatter.date}
               </span>
             </h3>
-            <p>{node.excerpt}</p>
+            <p>{node.frontmatter.excerpt}</p>
           </div>
         ))}
       </div>
@@ -28,22 +28,22 @@ const Blog = ({data}) => (
 export default Blog
 
 export const query = graphql`
-  query {
-      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-        totalCount
-        edges {
-          node {
-            id
-            fields {
-              slug
-            }
-            frontmatter {
-              title
-              date(formatString: "DD MMMM, YYYY")
-            }
+  query blogIndex {
+    allMdx {
+      edges {
+        node {
+          id
+          excerpt
+          frontmatter {
+            title
+            date
             excerpt
+          }
+          fields {
+            slug
           }
         }
       }
     }
+  }
   `

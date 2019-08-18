@@ -22,26 +22,26 @@ export default class NavBar extends React.Component {
               Blog
               </Menu.Item>
             </Link>
-            <Link to="/media-and-projects">
+            <Link to="/media">
               <Menu.Item
-                  name='media-and-projects'
-                  active={activeItem === 'media-and-projects'}
+                  name='media'
+                  active={activeItem === 'media'}
                   onClick={this.handleItemClick}
                 >
-                Media and Projects
+                Media
               </Menu.Item>
             </Link>
             <Link to="/">
               <Menu.Item
-                  name='videos'
-                  active={activeItem === 'videos'}
+                  name='projects'
+                  active={activeItem === 'projects'}
                   onClick={this.handleItemClick}
                 >
-                Videos
+                Projects
               </Menu.Item>
             </Link>
               <Menu.Item>
-                Comic Roulette
+                Sketch Roulette
               </Menu.Item>
           </Menu>
         </Segment>

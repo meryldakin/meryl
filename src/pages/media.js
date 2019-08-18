@@ -1,14 +1,13 @@
 import React from "react"
-import { graphql } from "gatsby"
 import Layout from "../components/layout"
 
-const MediaAndProjects = ({data}) => (
+const Media = ({data}) => (
   <Layout>
     <div>
         <h1>
           Things I build:
         </h1>
-        
+
         <h1>
           Things I talk about:
         </h1>
@@ -16,4 +15,4 @@ const MediaAndProjects = ({data}) => (
   </Layout>
 )
 
-export default MediaAndProjects
+export default Media

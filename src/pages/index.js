@@ -39,8 +39,9 @@ const HomepageHeading = ({ mobile }) => (
         marginTop: mobile ? '1.5em' : '3em',
       }}
     />
+    <p>This is a place for me to store my stuff.</p>
     <Button primary size='small'>
-      Comic Roulette
+      Sketch Roulette
       <Icon name='right arrow' />
     </Button>
   </Container>

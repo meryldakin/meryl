@@ -1,23 +1,29 @@
 import React from "react"
 import Layout from "../components/layout.js"
 import { graphql } from "gatsby"
+import { Segment, Grid } from 'semantic-ui-react'
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
-export default ({ data }) => {
-  const post = data.markdownRemark
+export default ({ data: {mdx} }) => {
   return (
     <Layout>
-      <div>
-        <h1>{post.frontmatter.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
-      </div>
+      <Grid padded textAlign="left">
+        <Segment padded='very'>
+          <div>
+            <h1>{mdx.frontmatter.title}</h1>
+            <MDXRenderer>{mdx.body}</MDXRenderer>
+          </div>
+        </Segment>
+      </Grid>
     </Layout>
   )
 }
 
-export const query = graphql`
-  query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+export const pageQuery = graphql`
+  query BlogPostQuery($id: String) {
+    mdx(id: { eq: $id }) {
+      id
+      body
       frontmatter {
         title
       }

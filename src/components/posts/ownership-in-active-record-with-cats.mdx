@@ -1,0 +1,62 @@
+---
+title: "Ownership in Active Record, with Cats"
+date: "2017-03-28"
+excerpt: "sidfksdjfh"
+---
+import CatsWithOwner from "../post-images/cats-with-owner.js"
+
+> *An illustration of* `has_many` *and* `belongs_to`
+
+## Introduction
+ActiveRecord abstracts away the complexities of linking databases and object models. Which is great, because it’s complicated and now we never have to write all that code every time we want to manipulate databases in Ruby. But all the layers of abstraction can make it hard to remember the definition of those relationships.
+Has_many v. belongs_to: a feline example
+We have two pieces of data: owners and cats. We want to keep track of who owns which cats. Here’s how we can remember which data is the “belongs-to” data and which is the “has-many” data.
+
+## Cats with their Owner
+
+<CatsWithOwner/>
+
+One owner, we’ll call her “Meryl,” has eight cats. Does Meryl have to keep track of her cats or do the cats have to keep track of Meryl? In other words, which table has the foreign key of the other one?
+
+## Cats remember their Owner:
+
+
+
+These cats all have a collar with their owner’s information on it. They “belong_to” their owner. They will keep their owner’s foreign key in their table.
+Let’s see how it would work the other way.
+
+## Owner remembers all her cats:
+
+
+
+Even though in real life Meryl is more likely to remember who her kitties are than it is that her kitties give a shit about her, it doesn’t make sense for her to wear the identification of each of her cats. Her cats have to “remember” her, they keep her foreign ID in their tables.
+
+## Now in code
+
+A less-illustrated example of has_many belongs_to
+Let’s draw out our cats and owners table:
+
+
+Cool, that works. We know Scamp belongs to Meryl.
+But Meryl is cat crazy and gets another. Then another. Now our table looks like this:
+
+That’s not going to work, because as Meryl gets infinitely more cats, our table grows infinitely sideways, which is just a dumb looking table.
+So let’s create another table to hold our cats. In order to associate them with the right owner, should we put the owner’s id on the cat table or the cat id on the owner’s table? Let’s check:
+**Cat ID on Owner’s table**
+
+That looks the same as our last table, which we already decided was a bad idea. So let’s try the other way.
+**Owner ID on cat table**
+
+Yeah that totally makes more sense.
+**TABLE MIGRATION SET-UP**
+
+
+**ACTIVERECORD CLASSES SET-UP**
+
+
+*Notice: has many’s table is plural, belongs to table is singular.*
+
+# REMEMBER:
+> The cats have to remember their owner.
+>
+> The table of data that “belongs_to” another will have the foreign id of the other table.
